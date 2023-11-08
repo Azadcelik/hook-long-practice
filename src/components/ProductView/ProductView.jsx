@@ -2,11 +2,13 @@ import React from 'react';
 import ProductListItem from '../ProductListItem';
 import ProductDetails from '../ProductDetails';
 import './ProductView.css';
-
+import { useState } from 'react';
 function ProductView({ products }) {
 
-  // TODO: Replace with state variable
-  const sideOpen = true;
+  const [sideOpen, setSideOpen] = useState(true);
+  const [selectedProduct,setSelectedProduct] = useState(true)
+ 
+ 
 
   return (
     <div className="product-view">
@@ -14,18 +16,25 @@ function ProductView({ products }) {
         <h1>Products</h1>
         <div className="product-list">
           {products.map(item =>
+        
             <ProductListItem
               key={item.id}
               product={item}
-              onClick={() => console.log('SELECT PRODUCT', item)}
-            />
+              onClick={() => {
+                setSelectedProduct(!selectedProduct)
+                setSideOpen(true)
+              }
+            }
+          
+              />
+              
           )}
         </div>
       </div>
       <div className="product-side-panel">
         <div className="product-side-panel-toggle-wrapper">
           <div className="product-side-panel-toggle"
-               onClick={() => console.log('TOGGLE SIDE PANEL')}>
+               onClick={() =>setSideOpen(!sideOpen)}>
             {sideOpen ? '>' : '<'}
           </div>
         </div>
