@@ -9,14 +9,19 @@ function ProductView({ products }) {
   const [sideOpen, setSideOpen] = useState(true);
   const [selectedProduct,setSelectedProduct] = useState('')
 
-
+ // Open side panel
   useEffect(() => {
+    // console.log(`selectedProduct CHANGED TO`, selectedProduct);
     setSideOpen(true);
   }, [selectedProduct])
 
+  // Deselect product
   useEffect(() => {
+    // console.log(`sideOpen CHANGED TO`, sideOpen);
     setSelectedProduct();
   }, [sideOpen]);
+
+
 
   return (
     <div className="product-view">
